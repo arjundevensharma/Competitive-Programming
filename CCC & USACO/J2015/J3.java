@@ -1,8 +1,6 @@
-package contestExercises;
+import java.util.*;
 
-import java.util.Scanner;
-
-public class vowelThing {
+public class Main {
 
 	static String vowelOutput(String word, int i) {
 		String newWord = "";
