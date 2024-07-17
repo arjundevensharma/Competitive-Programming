@@ -1,6 +1,6 @@
 /**
  * Solution by arjundevensharma
- * Date: July 16, 2024
+ * Date: 07/16/2024
  * Contest: CSES Problem Set
  * Problem: Distinct Numbers
 **/
