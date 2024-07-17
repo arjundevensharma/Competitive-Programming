@@ -21,43 +21,24 @@ int dx[] = {1, -1, 0, 0, 0, 0, 0, 0, 1, -1};
 int dy[] = {0, 0, 1, -1, 0, 0, 1, -1, 0, 0};
 int dz[] = {0, 0, 0, 0, 1, -1, 0, 0, 0, 0};
 
-int n, m, k;
+const int mxN = 2e5;
+
+int n, m, k, a[mxN], b[mxN];
 
 void solve() {
     cin >> n >> m >> k;
-
-    set <int> a, b;
-
-    FR(i,n) {
-        int c;
-        cin >> c;
-        a.insert(c);
-    }
-
-    FR(i,m) {
-        int c;
-        cin >> c;
-        b.insert(c);
-    }
-
-    int n = 0;
-
-    auto it = b.begin();
-    auto elem = a.begin();
-
-    while (it != b.end()) {
-        if (*elem - *it > k) {
-            it++;
-        } else if (*it - *elem > k) {
-            elem++;
-        } else if (abs(*elem - *it) <= k) {
-            n++;
-            elem++;
-            it++;
+    FR(i, n) cin >> a[i];
+    FR(i, m) cin >> b[i];
+    sort (a, a + n); sort (b, b + m);
+    int ans = 0;
+    for (int i = 0, j = 0; i < n; i++) {
+        while (j < m && b[j] < a[i] - k) j++;
+        if (j < m && b[j] <= a[i] + k) {
+            ans++;
+            j++;
         }
     }
-
-    cout << n;
+    cout << ans;
 }
 
 int main() {
