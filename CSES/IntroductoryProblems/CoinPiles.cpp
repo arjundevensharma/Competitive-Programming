@@ -4,27 +4,36 @@ using namespace std;
 #define ll long long
 #define all(v) v.begin(), v.end()
 #define pb push_back
+#define mp make_pair
 #define sz(a) (int)a.size()
  
-#define FR(i, n) for(ll i = 0; i < (n); i++)
-#define FOR(i, a, b) for(ll i = (a); i < (b); i++)
-#define FORR(i, a, b) for(ll i = (a); i >= (b); i--)
+#define FR(i, n) for(int i = 0; i < (n); i++)
+#define FOR(i, a, b) for(int i = (a); i < (b); i++)
+#define FORR(i, a, b) for(int i = (a); i >= (b); i--)
  
-//directions of movement
 int dx[] = {1, -1, 0, 0, 0, 0, 0, 0, 1, -1};
 int dy[] = {0, 0, 1, -1, 0, 0, 1, -1, 0, 0};
 int dz[] = {0, 0, 0, 0, 1, -1, 0, 0, 0, 0};
  
-ll a, b;
+int a, b;
  
 void solve () {
     cin >> a >> b;
  
-    if (((a + b) % 3 == 0) && (a * 2) >= b && (b * 2) >= a) {
-        cout << "YES" << "\n";
+    int d;
+ 
+    if (a > b) {
+        d = a - b;
+        a -= d * 2;
+        b -= d;
     } else {
-        cout << "NO" << "\n";
+        d = b - a;
+        b -= d * 2;
+        a -= d;
     }
+ 
+    if (a % 3 == 0 && b % 3 == 0 && b >= 0 && a >= 0) cout << "YES\n";
+    else cout << "NO\n";
 }
  
 int main () {
@@ -32,7 +41,10 @@ int main () {
     cin.tie(0);
     cout.tie(0);
  
-    int t; cin >> t;
-    while (t--)
+    int t; 
+    cin >> t;
+ 
+    while (t--) {
         solve();
+    }
 }
