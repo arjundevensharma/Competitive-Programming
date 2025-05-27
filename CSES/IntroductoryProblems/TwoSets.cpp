@@ -4,64 +4,42 @@ using namespace std;
 #define ll long long
 #define all(v) v.begin(), v.end()
 #define pb push_back
+#define mp make_pair
 #define sz(a) (int)a.size()
  
-#define FR(i, n) for(ll i = 0; i < (n); i++)
-#define FOR(i, a, b) for(ll i = (a); i < (b); i++)
-#define FORR(i, a, b) for(ll i = (a); i >= (b); i--)
+#define FR(i, n) for(int i = 0; i < (n); i++)
+#define FOR(i, a, b) for(int i = (a); i < (b); i++)
+#define FORR(i, a, b) for(int i = (a); i >= (b); i--)
  
-//directions of movement
 int dx[] = {1, -1, 0, 0, 0, 0, 0, 0, 1, -1};
 int dy[] = {0, 0, 1, -1, 0, 0, 1, -1, 0, 0};
 int dz[] = {0, 0, 0, 0, 1, -1, 0, 0, 0, 0};
  
-ll n;
+int n;
  
 void solve () {
     cin >> n;
+    
+    long double l = ((n + 1) * (n / 2.0) );
  
-    //all nums divisible by four are possible
-    //all even nums non-divisble by four are not possible
-    //odd nums that are 
- 
-    if ( (n%2 ==0 && n%4 != 0) || (n%2 !=0 && n%4 == 1) ) cout << "NO";
+    if ( (ll)l % 2 != 0) cout << "NO";
     else {
+        l/= 2.0;
         cout << "YES\n";
-        if (n % 4 == 0) {
-            cout << n / 2 << "\n";
-            FOR(i, 1, n / 4 + 1) {
-                cout << i << ' ' << n + 1 - i << ' ';
-            }
-            cout << n / 2 << "\n";
-            FOR(i, n / 4 + 1, n / 2 + 1) {
-                cout << i << ' ' << n + 1 - i << ' ';
-            }
-        } else {
-            //11, 5, 17 ; 6, 4, 2
-            int num;
-            int toAvoid;
-            cout << (n + 1) / 2 << "\n";
-            FOR(i, 1, n / 2 + 1) {
-                if (n - i + 1 - (n + 1) / 2 == i) {
-                    cout << i << ' ' << (n + 1) / 2 << ' ';
-                    num = n - i + 1;
-                    toAvoid = i;
-                    break;
-                }
-            }
- 
-            FOR(i, 1, n / 4 + 1) {
-                if (i != toAvoid) cout << i << ' ' << n + 1 - i << ' ';
-            }
- 
-            cout << "\n" << n / 2 << "\n";
- 
-            cout << num << ' ';
-            FOR(i, n / 4 + 1, n / 2 + 1) {
-                if (i != toAvoid) cout << i << ' ' << n + 1 - i << ' ';
+        string ow = "";
+        string nw = "";
+        ll c = 0;
+        FORR(i, n, 1) {
+            if (l - i >= 0) {
+                ow += to_string(i) + " ";
+                l -= i;
+                c++;
+            } else {
+                nw += to_string(i) + " ";
             }
         }
-    }
+        cout << c << "\n" << ow << "\n" << (n - c) << "\n" << nw;
+    }    
 }
  
 int main () {
@@ -69,5 +47,10 @@ int main () {
     cin.tie(0);
     cout.tie(0);
  
-    solve();
+    //int t; 
+    //cin >> t;
+ 
+    //while (t--) {
+        solve();
+    //}
 }
