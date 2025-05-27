@@ -4,31 +4,33 @@ using namespace std;
 #define ll long long
 #define all(v) v.begin(), v.end()
 #define pb push_back
+#define mp make_pair
 #define sz(a) (int)a.size()
  
-#define FR(i, n) for(ll i = 0; i < (n); i++)
-#define FOR(i, a, b) for(ll i = (a); i < (b); i++)
-#define FORR(i, a, b) for(ll i = (a); i >= (b); i--)
+#define FR(i, n) for(int i = 0; i < (n); i++)
+#define FOR(i, a, b) for(int i = (a); i < (b); i++)
+#define FORR(i, a, b) for(int i = (a); i >= (b); i--)
  
-//directions of movement
 int dx[] = {1, -1, 0, 0, 0, 0, 0, 0, 1, -1};
 int dy[] = {0, 0, 1, -1, 0, 0, 1, -1, 0, 0};
 int dz[] = {0, 0, 0, 0, 1, -1, 0, 0, 0, 0};
  
-ll n;
+int n;
  
 void solve () {
     cin >> n;
-    ll ans = 1;
  
-    FR(i, n) {
-        ans = ans * 2;
-        if (ans > 1000000007) {
-            ans = ans % 1000000007;
+    ll a = 2;
+    
+    ll b = (ll)pow (10,9) + 7;
+ 
+    FOR(i, 1, n) {
+        a *= 2;
+        if (a > b) {
+            a %= b;
         }
     }
- 
-    cout << ans;
+    cout << a;
 }
  
 int main () {
@@ -36,5 +38,10 @@ int main () {
     cin.tie(0);
     cout.tie(0);
  
-    solve();
+    //int t; 
+    //cin >> t;
+ 
+    //while (t--) {
+        solve();
+    //}
 }
